@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { LuTent } from 'react-icons/lu'
 import { Button } from '../ui/button'

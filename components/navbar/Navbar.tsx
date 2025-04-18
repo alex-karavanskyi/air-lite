@@ -1,4 +1,3 @@
-import React from 'react'
 import NavSearch from './NavSearch'
 import LinksDropdown from './LinksDropdown'
 import DarkMode from './DarkMode'
