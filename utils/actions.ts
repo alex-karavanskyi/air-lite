@@ -137,9 +137,116 @@ export const createPropertyAction = async (
   const user = await getAuthUser()
   try {
     const rawData = Object.fromEntries(formData)
+    const file = formData.get('image') as File
+
     const validatedFields = validateWithZodSchema(propertySchema, rawData)
+    const validatedFile = validateWithZodSchema(imageSchema, { image: file })
+    const fullPath = await uploadImage(validatedFile.image)
+
+    await db.property.create({
+      data: {
+        ...validatedFields,
+        image: fullPath,
+        profileId: user.id,
+      },
+    })
   } catch (error) {
     return renderError(error)
   }
   redirect('/')
+}
+
+export const fetchProperties = async ({
+  search = '',
+  category,
+}: {
+  search?: string
+  category?: string
+}) => {
+  const properties = await db.property.findMany({
+    where: {
+      category,
+      OR: [
+        { name: { contains: search, mode: 'insensitive' } },
+        { tagline: { contains: search, mode: 'insensitive' } },
+      ],
+    },
+    select: {
+      id: true,
+      name: true,
+      tagline: true,
+      country: true,
+      image: true,
+      price: true,
+    },
+  })
+  return properties
+}
+
+export const fetchFavoriteId = async ({
+  propertyId,
+}: {
+  propertyId: string
+}) => {
+  const user = await getAuthUser()
+  const favorite = await db.favorite.findFirst({
+    where: {
+      propertyId,
+      profileId: user.id,
+    },
+    select: {
+      id: true,
+    },
+  })
+  return favorite?.id || null
+}
+export const toggleFavoriteAction = async (prevState: {
+  propertyId: string
+  favoriteId: string | null
+  pathname: string
+}) => {
+  const user = await getAuthUser()
+  const { propertyId, favoriteId, pathname } = prevState
+  try {
+    if (favoriteId) {
+      await db.favorite.delete({
+        where: {
+          id: favoriteId,
+        },
+      })
+    } else {
+      await db.favorite.create({
+        data: {
+          propertyId,
+          profileId: user.id,
+        },
+      })
+    }
+    revalidatePath(pathname)
+    return { message: favoriteId ? 'Removed from Faves' : 'Added to Faves' }
+  } catch (error) {
+    return renderError(error)
+  }
+}
+
+export const fetchFavorites = async () => {
+  const user = await getAuthUser()
+  const favorites = await db.favorite.findMany({
+    where: {
+      profileId: user.id,
+    },
+    select: {
+      property: {
+        select: {
+          id: true,
+          name: true,
+          tagline: true,
+          price: true,
+          country: true,
+          image: true,
+        },
+      },
+    },
+  })
+  return favorites.map((favorite) => favorite.property)
 }
