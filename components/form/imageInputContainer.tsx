@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Button } from '../ui/button'
 import FormContainer from './FormContainer'
 import ImageInput from './ImageInput'
-import { SubmitButton } from './Button'
+import { SubmitButton } from './Buttons'
 import { type actionFunction } from '@/utils/types'
 import { LuUser } from 'react-icons/lu'
 
@@ -16,7 +16,7 @@ type ImageInputContainerProps = {
   children?: React.ReactNode
 }
 
-function ImageInputContainer(props: ImageInputContainerProps) {
+const ImageInputContainer = (props: ImageInputContainerProps) => {
   const { image, name, action, text } = props
   const [isUpdateFormVisible, setUpdateFormVisible] = useState(false)
 

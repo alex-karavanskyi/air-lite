@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/select'
 
 const name = 'country'
+
 const CountriesInput = ({ defaultValue }: { defaultValue?: string }) => {
   return (
     <div className='mb-2'>

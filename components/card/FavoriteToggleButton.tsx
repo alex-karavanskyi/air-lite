@@ -1,5 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
-import { CardSignInButton } from '@/components/form/Button'
+import { CardSignInButton } from '@/components/form/Buttons'
 import { fetchFavoriteId } from '@/utils/actions'
 import FavoriteToggleForm from './FavoriteToggleForm'
 

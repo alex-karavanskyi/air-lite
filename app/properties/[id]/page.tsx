@@ -1,4 +1,4 @@
-import { fetchPropertyDetails } from '@/utils/actions'
+import { fetchPropertyDetails, findExistingReview } from '@/utils/actions'
 import { redirect } from 'next/navigation'
 import { Separator } from '@/components/ui/separator'
 import { DynamicMap } from '@/utils/property'
@@ -12,6 +12,9 @@ import PropertyDetails from '@/components/properties/PropertyDetails'
 import UserInfo from '@/components/properties/UserInfo'
 import Description from '@/components/properties/Description'
 import Amenities from '@/components/properties/Amenities'
+import SubmitReview from '@/components/reviews/SubmitReview'
+import PropertyReviews from '@/components/reviews/PropertyReviews'
+import { auth } from '@clerk/nextjs/server'
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id)
@@ -20,6 +23,11 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const firstName = property.profile.firstName
   const profileImage = property.profile.profileImage
   const details = { baths, bedrooms, beds, guests }
+
+  const { userId } = auth()
+  const isNotOwner = property.profile.clerkId !== userId
+  const reviewDoesNotExist =
+    userId && isNotOwner && !(await findExistingReview(userId, property.id))
 
   return (
     <section>
@@ -49,6 +57,9 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
           <BookingCalendar />
         </div>
       </section>
+      {reviewDoesNotExist && <SubmitReview propertyId={property.id} />}
+      <SubmitReview propertyId={property.id} />
+      <PropertyReviews propertyId={property.id} />
     </section>
   )
 }
