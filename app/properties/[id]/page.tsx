@@ -1,19 +1,19 @@
-import { fetchPropertyDetails, findExistingReview } from '@/utils/actions'
-import { redirect } from 'next/navigation'
-import { Separator } from '@/components/ui/separator'
-import { DynamicMap } from '@/utils/property'
 import BreadCrumbs from '@/components/properties/BreadCrumbs'
 import FavoriteToggleButton from '@/components/card/FavoriteToggleButton'
 import ShareButton from '@/components/properties/ShareButton'
 import ImageContainer from '@/components/properties/ImageContainer'
 import PropertyRating from '@/components/card/PropertyRating'
-import BookingCalendar from '@/components/properties/BookingCalendar'
 import PropertyDetails from '@/components/properties/PropertyDetails'
 import UserInfo from '@/components/properties/UserInfo'
 import Description from '@/components/properties/Description'
 import Amenities from '@/components/properties/Amenities'
 import SubmitReview from '@/components/reviews/SubmitReview'
 import PropertyReviews from '@/components/reviews/PropertyReviews'
+import { fetchPropertyDetails, findExistingReview } from '@/utils/actions'
+import { redirect } from 'next/navigation'
+import { Separator } from '@/components/ui/separator'
+import { DynamicMap } from '@/utils/property'
+import { DynamicBookingWrapper } from '@/utils/property'
 import { auth } from '@clerk/nextjs/server'
 
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
@@ -54,7 +54,11 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
           <DynamicMap countryCode={property.country} />
         </div>
         <div className='lg:col-span-4 flex flex-col items-center'>
-          <BookingCalendar />
+          <DynamicBookingWrapper
+            propertyId={property.id}
+            price={property.price}
+            bookings={property.bookings}
+          />
         </div>
       </section>
       {reviewDoesNotExist && <SubmitReview propertyId={property.id} />}
