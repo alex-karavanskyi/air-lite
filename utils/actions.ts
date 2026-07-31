@@ -1,5 +1,5 @@
 'use server'
-import db from './db'
+import { db } from './db'
 import { revalidatePath } from 'next/cache'
 import {
   profileSchema,
@@ -31,7 +31,7 @@ const renderError = (error: unknown): { message: string } => {
 
 export const createProfileAction = async (
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ) => {
   try {
     const user = await currentUser()
@@ -87,7 +87,7 @@ export const fetchProfile = async () => {
 
 export const updateProfileAction = async (
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ): Promise<{ message: string }> => {
   const user = await getAuthUser()
   try {
@@ -109,7 +109,7 @@ export const updateProfileAction = async (
 
 export const updateProfileImageAction = async (
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ) => {
   const user = await getAuthUser()
   try {
@@ -134,7 +134,7 @@ export const updateProfileImageAction = async (
 
 export const createPropertyAction = async (
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ): Promise<{ message: string }> => {
   const user = await getAuthUser()
   try {
@@ -272,7 +272,7 @@ export const fetchPropertyDetails = async (id: string) => {
 
 export async function createReviewAction(
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ) {
   const user = await getAuthUser()
   try {
@@ -377,7 +377,7 @@ export async function fetchPropertyRating(propertyId: string) {
 
 export const findExistingReview = async (
   userId: string,
-  propertyId: string
+  propertyId: string,
 ) => {
   return db.review.findFirst({
     where: {
@@ -503,7 +503,7 @@ export const fetchRentals = async () => {
         totalNightsSum: totalNightsSum._sum.totalNights,
         orderTotalSum: orderTotalSum._sum.orderTotal,
       }
-    })
+    }),
   )
 
   return rentalsWithBookingSums
@@ -541,7 +541,7 @@ export const fetchRentalDetails = async (propertyId: string) => {
 
 export const updatePropertyAction = async (
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ): Promise<{ message: string }> => {
   const user = await getAuthUser()
   const propertyId = formData.get('id') as string
@@ -568,7 +568,7 @@ export const updatePropertyAction = async (
 
 export const updatePropertyImageAction = async (
   prevState: unknown,
-  formData: FormData
+  formData: FormData,
 ): Promise<{ message: string }> => {
   const user = await getAuthUser()
   const propertyId = formData.get('id') as string
