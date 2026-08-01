@@ -1,6 +1,6 @@
 'use client'
-import { Card, CardHeader } from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Card, CardHeader } from '@/shared/ui/card'
+import { Skeleton } from '@/shared/ui/skeleton'
 
 function loading() {
   return (

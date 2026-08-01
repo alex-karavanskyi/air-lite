@@ -6,7 +6,7 @@ import {
   updateProfileAction,
   fetchProfile,
   updateProfileImageAction,
-} from '@/utils/actions'
+} from '@/shared/action/profile'
 
 async function ProfilePage() {
   const profile = await fetchProfile()

@@ -1,7 +1,7 @@
 'use client'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { useFormStatus } from 'react-dom'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/shared/ui/button'
 import { SignInButton } from '@clerk/nextjs'
 import { FaRegHeart, FaHeart } from 'react-icons/fa'
 import { LuTrash2, LuSquare } from 'react-icons/lu'

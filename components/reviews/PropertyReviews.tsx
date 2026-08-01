@@ -1,4 +1,4 @@
-import { fetchPropertyReviews } from '@/utils/actions'
+import { fetchPropertyReviews } from '@/shared/action/reviews'
 import Title from '@/components/properties/Title'
 import ReviewCard from './ReviewCard'
 

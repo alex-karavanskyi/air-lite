@@ -11,11 +11,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@/shared/ui/table'
 
 import FormContainer from '@/components/form/FormContainer'
 import { IconButton } from '@/components/form/Buttons'
-import { fetchBookings, deleteBookingAction } from '@/utils/actions'
+import { fetchBookings, deleteBookingAction } from '@/shared/action/bookings'
 
 async function BookingsPage() {
   const bookings = await fetchBookings()

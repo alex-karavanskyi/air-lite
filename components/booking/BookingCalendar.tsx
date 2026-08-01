@@ -1,5 +1,5 @@
 'use client'
-import { Calendar } from '@/components/ui/calendar'
+import { Calendar } from '@/shared/ui/calendar'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { DateRange } from 'react-day-picker'

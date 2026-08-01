@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { amenities, Amenity } from '@/utils/amenities'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from '@/shared/ui/checkbox'
 
 const AmenitiesInput = ({ defaultValue }: { defaultValue?: Amenity[] }) => {
   const amenitiesWithIcons = defaultValue?.map(({ name, selected }) => {
@@ -12,7 +12,7 @@ const AmenitiesInput = ({ defaultValue }: { defaultValue?: Amenity[] }) => {
     }
   })
   const [selectedAmenities, setSelectedAmenities] = useState<Amenity[]>(
-    amenitiesWithIcons || amenities
+    amenitiesWithIcons || amenities,
   )
   const handleChange = (amenity: Amenity) => {
     setSelectedAmenities((prev) => {

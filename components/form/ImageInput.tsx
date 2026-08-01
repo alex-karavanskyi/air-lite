@@ -1,5 +1,5 @@
-import { Label } from '../ui/label'
-import { Input } from '../ui/input'
+import { Label } from '../../shared/ui/label'
+import { Input } from '../../shared/ui/input'
 
 const ImageInput = () => {
   const name = 'image'

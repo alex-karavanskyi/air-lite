@@ -1,5 +1,5 @@
 import EmptyList from '@/components/home/EmptyList'
-import { fetchRentals, deleteRentalAction } from '@/utils/actions'
+import { fetchRentals, deleteRentalAction } from '@/shared/action/properties'
 import Link from 'next/link'
 import { formatCurrency } from '@/utils/format'
 import {
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@/shared/ui/table'
 import FormContainer from '@/components/form/FormContainer'
 import { IconButton } from '@/components/form/Buttons'
 

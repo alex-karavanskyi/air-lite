@@ -1,4 +1,4 @@
-import { Skeleton } from '../ui/skeleton'
+import { Skeleton } from '../../shared/ui/skeleton'
 
 function LoadingTable({ rows }: { rows?: number }) {
   const tableRows = Array.from({ length: rows || 5 }, (_, i) => {

@@ -1,13 +1,13 @@
 'use client'
 import dynamic from 'next/dynamic'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/shared/ui/skeleton'
 
 export const DynamicMap = dynamic(
   () => import('@/components/properties/PropertyMap'),
   {
     ssr: false,
     loading: () => <Skeleton className='h-[400px] w-full' />,
-  }
+  },
 )
 
 export const DynamicBookingWrapper = dynamic(
@@ -15,5 +15,5 @@ export const DynamicBookingWrapper = dynamic(
   {
     ssr: false,
     loading: () => <Skeleton className='h-[200px] w-full' />,
-  }
+  },
 )

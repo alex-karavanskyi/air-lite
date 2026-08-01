@@ -1,10 +1,6 @@
 'use client'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-import { Button } from '@/components/ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover'
+import { Button } from '@/shared/ui/button'
 import { LuShare2 } from 'react-icons/lu'
 import {
   TwitterShareButton,

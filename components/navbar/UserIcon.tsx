@@ -1,5 +1,5 @@
 import { LuUser } from 'react-icons/lu'
-import { fetchProfileImage } from '@/utils/actions'
+import { fetchProfileImage } from '@/shared/action/profile'
 
 async function UserIcon() {
   const profileImage = await fetchProfileImage()

@@ -1,8 +1,8 @@
 'use client'
 
-import { Card, CardHeader } from '@/components/ui/card'
+import { Card, CardHeader } from '@/shared/ui/card'
 import { LuMinus, LuPlus } from 'react-icons/lu'
-import { Button } from '../ui/button'
+import { Button } from '../../shared/ui/button'
 import { useState } from 'react'
 
 function CounterInput({

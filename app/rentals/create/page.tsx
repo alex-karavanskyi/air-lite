@@ -7,7 +7,7 @@ import CountriesInput from '@/components/form/CountriesInput'
 import ImageInput from '@/components/form/ImageInput'
 import CounterInput from '@/components/form/CounterInput'
 import AmenitiesInput from '@/components/form/AmenitiesInput'
-import { createPropertyAction } from '@/utils/actions'
+import { createPropertyAction } from '@/shared/action/properties'
 import { SubmitButton } from '@/components/form/Buttons'
 
 const CreateProperty = () => {

@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/shared/ui/button'
 import Title from './Title'
 const Description = ({ description }: { description: string }) => {
   const [isFullDescriptionShown, setIsFullDescriptionShown] = useState(false)

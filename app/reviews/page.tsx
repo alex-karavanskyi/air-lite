@@ -1,4 +1,7 @@
-import { deleteReviewAction, fetchPropertyReviewsByUser } from '@/utils/actions'
+import {
+  deleteReviewAction,
+  fetchPropertyReviewsByUser,
+} from '@/shared/action/reviews'
 import { IconButton } from '@/components/form/Buttons'
 import EmptyList from '@/components/home/EmptyList'
 import ReviewCard from '@/components/reviews/ReviewCard'

@@ -1,4 +1,4 @@
-import { fetchReservations } from '@/utils/actions'
+import { fetchReservations } from '@/shared/action/bookings'
 import Link from 'next/link'
 import EmptyList from '@/components/home/EmptyList'
 import CountryFlagAndName from '@/components/card/CountryFlagAndName'
@@ -11,7 +11,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@/shared/ui/table'
 
 async function ReservationsPage() {
   const reservations = await fetchReservations()

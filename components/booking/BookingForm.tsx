@@ -1,6 +1,6 @@
 import { calculateTotals } from '@/utils/calculateTotals'
-import { Card, CardTitle } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
+import { Card, CardTitle } from '@/shared/ui/card'
+import { Separator } from '@/shared/ui/separator'
 import { useProperty } from '@/utils/store'
 import { formatCurrency } from '@/utils/format'
 

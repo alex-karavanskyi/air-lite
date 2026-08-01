@@ -4,9 +4,9 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/shared/ui/dropdown-menu'
 import { LuAlignLeft } from 'react-icons/lu'
-import { Button } from '../ui/button'
+import { Button } from '../../shared/ui/button'
 import { links } from '@/utils/links'
 import { SignedOut, SignedIn, SignInButton, SignUpButton } from '@clerk/nextjs'
 import SignOutLink from './SignOutLink'
