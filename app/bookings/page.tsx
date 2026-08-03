@@ -16,9 +16,13 @@ import {
 import FormContainer from '@/components/form/FormContainer'
 import { IconButton } from '@/components/form/Buttons'
 import { fetchBookings, deleteBookingAction } from '@/shared/action/bookings'
+import { auth } from '@clerk/nextjs/server'
 
 async function BookingsPage() {
+  await auth.protect()
+
   const bookings = await fetchBookings()
+
   if (bookings.length === 0) {
     return <EmptyList />
   }

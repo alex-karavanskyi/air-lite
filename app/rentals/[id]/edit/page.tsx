@@ -15,9 +15,12 @@ import ImageInputContainer from '@/components/form/ImageInputContainer'
 import { type Amenity } from '@/utils/amenities'
 import { SubmitButton } from '@/components/form/Buttons'
 import { redirect } from 'next/navigation'
+import { auth } from '@clerk/nextjs/server'
 
-async function EditRentalPage({ params }: { params: { id: string } }) {
-  const property = await fetchRentalDetails(params.id)
+async function EditRentalPage({ params }: { params: Promise<{ id: string }> }) {
+  await auth.protect()
+  const { id } = await params
+  const property = await fetchRentalDetails(id)
 
   if (!property) redirect('/')
 

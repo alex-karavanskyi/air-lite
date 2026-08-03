@@ -2,9 +2,9 @@
 import { Input } from '../../shared/ui/input'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
-import { useState, useEffect } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 
-function NavSearch() {
+function NavSearchContent() {
   const searchParams = useSearchParams()
 
   const pathname = usePathname()
@@ -39,4 +39,13 @@ function NavSearch() {
     />
   )
 }
+
+function NavSearch() {
+  return (
+    <Suspense fallback={null}>
+      <NavSearchContent />
+    </Suspense>
+  )
+}
+
 export default NavSearch

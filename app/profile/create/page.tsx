@@ -2,12 +2,23 @@ import FormInput from '@/components/form/FormInput'
 import FormContainer from '@/components/form/FormContainer'
 import { SubmitButton } from '@/components/form/Buttons'
 import { createProfileAction } from '@/shared/action/profile'
-import { currentUser } from '@clerk/nextjs/server'
+import { db } from '@/shared/utils/db'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 
 async function CreateProfile() {
+  await auth.protect()
+
   const user = await currentUser()
-  if (user?.privateMetadata?.hasProfile) redirect('/')
+  if (!user) return null
+
+  const profile = await db.profile.findUnique({
+    where: {
+      clerkId: user.id,
+    },
+  })
+
+  if (profile) redirect('/profile')
   return (
     <section>
       <h1 className='text-2xl font-semibold mb-8 capitalize'>new user</h1>

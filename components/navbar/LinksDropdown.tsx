@@ -8,7 +8,7 @@ import {
 import { LuAlignLeft } from 'react-icons/lu'
 import { Button } from '../../shared/ui/button'
 import { links } from '@/utils/links'
-import { SignedOut, SignedIn, SignInButton, SignUpButton } from '@clerk/nextjs'
+import { Show, SignInButton, SignUpButton } from '@clerk/nextjs'
 import SignOutLink from './SignOutLink'
 import Link from 'next/link'
 import UserIcon from './UserIcon'
@@ -22,8 +22,9 @@ function LinksDropdown() {
           <UserIcon />
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent className='w-52' align='start' sideOffset={10}>
-        <SignedOut>
+        <Show when='signed-out'>
           <DropdownMenuItem>
             <SignInButton mode='modal'>
               <button className='w-full text-left'>Login</button>
@@ -35,24 +36,24 @@ function LinksDropdown() {
               <button className='w-full text-left'>Register</button>
             </SignUpButton>
           </DropdownMenuItem>
-        </SignedOut>
-        <SignedIn>
-          {links.map((link) => {
-            return (
-              <DropdownMenuItem key={link.href}>
-                <Link href={link.href} className='capitalize w-full'>
-                  {link.label}
-                </Link>
-              </DropdownMenuItem>
-            )
-          })}
+        </Show>
+
+        <Show when='signed-in'>
+          {links.map((link) => (
+            <DropdownMenuItem key={link.href}>
+              <Link href={link.href} className='capitalize w-full'>
+                {link.label}
+              </Link>
+            </DropdownMenuItem>
+          ))}
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <SignOutLink />
           </DropdownMenuItem>
-        </SignedIn>
+        </Show>
       </DropdownMenuContent>
     </DropdownMenu>
   )
 }
+
 export default LinksDropdown

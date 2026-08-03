@@ -9,8 +9,10 @@ import CounterInput from '@/components/form/CounterInput'
 import AmenitiesInput from '@/components/form/AmenitiesInput'
 import { createPropertyAction } from '@/shared/action/properties'
 import { SubmitButton } from '@/components/form/Buttons'
+import { auth } from '@clerk/nextjs/server'
 
-const CreateProperty = () => {
+const CreateProperty = async () => {
+  await auth.protect()
   return (
     <section>
       <h1 className='text-2xl font-semibold mb-8 capitalize'>

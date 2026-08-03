@@ -7,8 +7,11 @@ import {
   fetchProfile,
   updateProfileImageAction,
 } from '@/shared/action/profile'
+import { auth } from '@clerk/nextjs/server'
 
 async function ProfilePage() {
+  await auth.protect()
+
   const profile = await fetchProfile()
 
   return (

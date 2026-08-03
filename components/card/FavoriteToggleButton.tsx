@@ -4,7 +4,7 @@ import { fetchFavoriteId } from '@/shared/action/favorites'
 import FavoriteToggleForm from './FavoriteToggleForm'
 
 async function FavoriteToggleButton({ propertyId }: { propertyId: string }) {
-  const { userId } = auth()
+  const { userId } = await auth.protect()
   if (!userId) return <CardSignInButton />
   const favoriteId = await fetchFavoriteId({ propertyId })
 

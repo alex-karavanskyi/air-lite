@@ -1,6 +1,8 @@
+import { auth } from '@clerk/nextjs/server'
 import React from 'react'
 
-const CheckoutPage = () => {
+async function CheckoutPage() {
+  await auth.protect()
   return <div>page</div>
 }
 

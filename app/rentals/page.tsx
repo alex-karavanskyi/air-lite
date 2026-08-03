@@ -13,8 +13,11 @@ import {
 } from '@/shared/ui/table'
 import FormContainer from '@/components/form/FormContainer'
 import { IconButton } from '@/components/form/Buttons'
+import { auth } from '@clerk/nextjs/server'
 
 async function RentalsPage() {
+  await auth.protect()
+
   const rentals = await fetchRentals()
 
   if (rentals.length === 0) {
@@ -25,7 +28,6 @@ async function RentalsPage() {
       />
     )
   }
-
   return (
     <div className='mt-16'>
       <h4 className='mb-4 capitalize'>Active Properties : {rentals.length}</h4>

@@ -12,14 +12,16 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/ui/table'
+import { auth } from '@clerk/nextjs/server'
 
 async function ReservationsPage() {
+  await auth.protect()
+
   const reservations = await fetchReservations()
 
   if (reservations.length === 0) {
     return <EmptyList />
   }
-
   return (
     <div className='mt-16'>
       <h4 className='mb-4 capitalize'>

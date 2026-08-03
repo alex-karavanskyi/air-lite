@@ -7,11 +7,14 @@ import EmptyList from '@/components/home/EmptyList'
 import ReviewCard from '@/components/reviews/ReviewCard'
 import Title from '@/components/properties/Title'
 import FormContainer from '@/components/form/FormContainer'
+import { auth } from '@clerk/nextjs/server'
 
 async function ReviewsPage() {
-  const reviews = await fetchPropertyReviewsByUser()
-  if (reviews.length === 0) return <EmptyList />
+  await auth.protect()
 
+  const reviews = await fetchPropertyReviewsByUser()
+
+  if (reviews.length === 0) return <EmptyList />
   return (
     <>
       <Title text='Your Reviews' />
