@@ -2,7 +2,7 @@ import {
   fetchRentalDetails,
   updatePropertyImageAction,
   updatePropertyAction,
-} from '@/shared/action/properties'
+} from '@/shared/actions/properties'
 import FormContainer from '@/components/form/FormContainer'
 import FormInput from '@/components/form/FormInput'
 import CategoriesInput from '@/components/form/CategoriesInput'

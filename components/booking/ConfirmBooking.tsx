@@ -4,7 +4,7 @@ import { Button } from '@/shared/ui/button'
 import { useProperty } from '@/utils/store'
 import FormContainer from '@/components/form/FormContainer'
 import { SubmitButton } from '@/components/form/Buttons'
-import { createBookingAction } from '@/shared/action/bookings'
+import { createBookingAction } from '@/shared/actions/bookings'
 
 function ConfirmBooking() {
   const { userId } = useAuth()

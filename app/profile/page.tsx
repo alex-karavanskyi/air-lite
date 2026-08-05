@@ -6,7 +6,7 @@ import {
   updateProfileAction,
   fetchProfile,
   updateProfileImageAction,
-} from '@/shared/action/profile'
+} from '@/shared/actions/profile'
 import { auth } from '@clerk/nextjs/server'
 
 async function ProfilePage() {

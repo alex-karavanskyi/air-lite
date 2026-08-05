@@ -7,7 +7,7 @@ import CountriesInput from '@/components/form/CountriesInput'
 import ImageInput from '@/components/form/ImageInput'
 import CounterInput from '@/components/form/CounterInput'
 import AmenitiesInput from '@/components/form/AmenitiesInput'
-import { createPropertyAction } from '@/shared/action/properties'
+import { createPropertyAction } from '@/shared/actions/properties'
 import { SubmitButton } from '@/components/form/Buttons'
 import { auth } from '@clerk/nextjs/server'
 
@@ -32,7 +32,7 @@ const CreateProperty = async () => {
               name='tagline'
               type='text '
               label='Tagline (30 limit)'
-              defaultValue='Dream Getaway Awaits You Here!'
+              defaultValue='Find Your Next Favorite Stay'
             />
             <PriceInput />
             <CategoriesInput />

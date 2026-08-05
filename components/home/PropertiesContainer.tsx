@@ -1,4 +1,4 @@
-import { fetchProperties } from '@/shared/action/properties'
+import { fetchProperties } from '@/shared/actions/properties'
 import PropertiesList from './PropertiesList'
 import EmptyList from './EmptyList'
 import type { PropertyCardProps } from '@/utils/types'

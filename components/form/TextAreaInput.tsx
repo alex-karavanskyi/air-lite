@@ -29,7 +29,6 @@ const TextAreaInput = ({
   )
 }
 
-const tempDefaultDescription =
-  'Glamping Tuscan Style in an Aframe Cabin Tent, nestled in a beautiful olive orchard. AC, heat, Queen Bed, TV, Wi-Fi and an amazing view. Close to Weeki Wachee River State Park, mermaids, manatees, Chassahwitzka River and on the SC Bike Path. Kayaks available for rivers. Bathhouse, fire pit, Kitchenette, fresh eggs. Relax & enjoy fresh country air. No pets please. Ducks, hens and roosters roam the grounds. We have a Pot Cake Rescue from Bimini, Retriever and Pom dog. The space is inspiring and relaxing. Enjoy the beauty of the orchard. Spring trees are in blossom and harvested in Fall. We have a farm store where we sell our farm to table products'
+const tempDefaultDescription = `Escape to a stylish modern retreat designed for comfort, relaxation, and unforgettable stays. This cozy home features a spacious queen bed, high-speed Wi-Fi, smart TV, air conditioning, a fully equipped kitchen, and a private outdoor patio where you can enjoy your morning coffee or unwind under the stars. Located just minutes from local restaurants, scenic hiking trails, beautiful beaches, and vibrant downtown attractions, it's the perfect base for exploring the area or simply slowing down and recharging. Guests have access to free parking, a fire pit, outdoor seating, and a peaceful garden surrounded by nature.`
 
 export default TextAreaInput

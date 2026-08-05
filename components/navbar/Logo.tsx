@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { LuTent } from 'react-icons/lu'
+import { GiTreehouse } from 'react-icons/gi'
 import { Button } from '../../shared/ui/button'
 
 const Logo = () => {
   return (
-    <Button size='icon' asChild>
+    <Button size='icon' className='size-10' asChild>
       <Link href='/'>
-        <LuTent className='w-6 h-6' />
+        <GiTreehouse className='size-10' />
       </Link>
     </Button>
   )

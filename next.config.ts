@@ -8,9 +8,18 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'mvdcjrimqrqzdoarpfxp.supabase.co',
+        hostname: 'plyasxwqyrsuukdqjgun.supabase.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
       },
     ],
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
   },
 }
 

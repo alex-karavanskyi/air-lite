@@ -15,7 +15,7 @@ import {
 
 import FormContainer from '@/components/form/FormContainer'
 import { IconButton } from '@/components/form/Buttons'
-import { fetchBookings, deleteBookingAction } from '@/shared/action/bookings'
+import { fetchBookings, deleteBookingAction } from '@/shared/actions/bookings'
 import { auth } from '@clerk/nextjs/server'
 
 async function BookingsPage() {

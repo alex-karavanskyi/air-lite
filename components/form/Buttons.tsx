@@ -62,12 +62,12 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
       type='submit'
       size='icon'
       variant='outline'
-      className=' p-2 cursor-pointer'
+      className='p-2 cursor-pointer rounded-full border border-border bg-white text-black shadow-sm transition-colors duration-200 ease-out hover:bg-slate-100 dark:bg-black dark:text-white dark:hover:bg-black/90'
     >
       {pending ? (
         <ReloadIcon className=' animate-spin' />
       ) : isFavorite ? (
-        <FaHeart />
+        <FaHeart className='text-destructive' />
       ) : (
         <FaRegHeart />
       )}

@@ -1,4 +1,4 @@
-import { fetchReservations } from '@/shared/action/bookings'
+import { fetchReservations } from '@/shared/actions/bookings'
 import Link from 'next/link'
 import EmptyList from '@/components/home/EmptyList'
 import CountryFlagAndName from '@/components/card/CountryFlagAndName'

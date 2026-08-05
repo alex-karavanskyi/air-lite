@@ -1,6 +1,6 @@
 import EmptyList from '@/components/home/EmptyList'
 import PropertiesList from '@/components/home/PropertiesList'
-import { fetchFavorites } from '@/shared/action/favorites'
+import { fetchFavorites } from '@/shared/actions/favorites'
 import { auth } from '@clerk/nextjs/server'
 
 async function FavoritesPage() {
