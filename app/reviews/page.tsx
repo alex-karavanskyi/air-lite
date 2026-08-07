@@ -5,20 +5,31 @@ import {
 import { IconButton } from '@/components/form/Buttons'
 import EmptyList from '@/components/home/EmptyList'
 import ReviewCard from '@/components/reviews/ReviewCard'
-import Title from '@/components/properties/Title'
 import FormContainer from '@/components/form/FormContainer'
 import { auth } from '@clerk/nextjs/server'
+import PageHeader from '@/components/layout/PageHeader'
 
 async function ReviewsPage() {
   await auth.protect()
 
   const reviews = await fetchPropertyReviewsByUser()
 
-  if (reviews.length === 0) return <EmptyList />
+  if (reviews.length === 0)
+    return (
+      <EmptyList
+        heading='No reviews written yet'
+        message='After your next stay, share your experience with other travelers.'
+        btnText='Explore stays'
+      />
+    )
   return (
-    <>
-      <Title text='Your Reviews' />
-      <section className='grid md:grid-cols-2 gap-8 mt-4 '>
+    <section className='pb-12'>
+      <PageHeader
+        eyebrow='Your feedback'
+        title='Reviews'
+        description={`${reviews.length} ${reviews.length === 1 ? 'review' : 'reviews'} shared with the community.`}
+      />
+      <div className='grid gap-5 md:grid-cols-2'>
         {reviews.map((review) => {
           const { comment, rating } = review
           const { name, image } = review.property
@@ -34,8 +45,8 @@ async function ReviewsPage() {
             </ReviewCard>
           )
         })}
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 

@@ -21,7 +21,9 @@ const ImageInputContainer = (props: ImageInputContainerProps) => {
   const [isUpdateFormVisible, setUpdateFormVisible] = useState(false)
 
   const userIcon = (
-    <LuUser className='w-24 h-24 bg-primary rounded-md text-white mb-4' />
+    <div className='mb-4 flex size-24 items-center justify-center rounded-3xl bg-primary/10 text-primary'>
+      <LuUser className='size-10' />
+    </div>
   )
   return (
     <div>
@@ -30,7 +32,7 @@ const ImageInputContainer = (props: ImageInputContainerProps) => {
           src={image}
           width={100}
           height={100}
-          className='rounded-md object-cover mb-4 w-24 h-24'
+          className='mb-4 size-24 rounded-3xl border-4 border-background object-cover shadow-md'
           alt={name}
         />
       ) : (
@@ -40,16 +42,18 @@ const ImageInputContainer = (props: ImageInputContainerProps) => {
       <Button
         variant='outline'
         size='sm'
+        type='button'
+        className='rounded-xl bg-background'
         onClick={() => setUpdateFormVisible((prev) => !prev)}
       >
         {text}
       </Button>
       {isUpdateFormVisible && (
-        <div className='max-w-lg mt-4'>
+        <div className='mt-4 max-w-lg rounded-2xl border bg-background p-4'>
           <FormContainer action={action}>
             {props.children}
             <ImageInput />
-            <SubmitButton size='sm' />
+            <SubmitButton size='sm' className='mt-3 rounded-lg' />
           </FormContainer>
         </div>
       )}

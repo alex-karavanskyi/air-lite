@@ -4,7 +4,7 @@ import { useFormStatus } from 'react-dom'
 import { Button } from '@/shared/ui/button'
 import { SignInButton } from '@clerk/nextjs'
 import { FaRegHeart, FaHeart } from 'react-icons/fa'
-import { LuTrash2, LuSquare } from 'react-icons/lu'
+import { LuPencil, LuTrash2 } from 'react-icons/lu'
 
 type btnSize = 'default' | 'lg' | 'sm'
 
@@ -82,7 +82,7 @@ export const IconButton = ({ actionType }: { actionType: actionType }) => {
   const renderIcon = () => {
     switch (actionType) {
       case 'edit':
-        return <LuSquare />
+        return <LuPencil />
       case 'delete':
         return <LuTrash2 />
       default:
@@ -93,10 +93,15 @@ export const IconButton = ({ actionType }: { actionType: actionType }) => {
 
   return (
     <Button
-      type='submit'
+      type={actionType === 'delete' ? 'submit' : 'button'}
       size='icon'
-      variant='link'
-      className='p-2 cursor-pointer'
+      variant='ghost'
+      aria-label={actionType === 'edit' ? 'Edit rental' : 'Delete item'}
+      className={`size-9 cursor-pointer rounded-xl ${
+        actionType === 'delete'
+          ? 'text-muted-foreground hover:bg-destructive/10 hover:text-destructive'
+          : 'text-muted-foreground hover:bg-primary/10 hover:text-primary'
+      }`}
     >
       {pending ? <ReloadIcon className=' animate-spin' /> : renderIcon()}
     </Button>

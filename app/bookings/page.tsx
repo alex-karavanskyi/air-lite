@@ -17,6 +17,7 @@ import FormContainer from '@/components/form/FormContainer'
 import { IconButton } from '@/components/form/Buttons'
 import { fetchBookings, deleteBookingAction } from '@/shared/actions/bookings'
 import { auth } from '@clerk/nextjs/server'
+import PageHeader from '@/components/layout/PageHeader'
 
 async function BookingsPage() {
   await auth.protect()
@@ -24,12 +25,23 @@ async function BookingsPage() {
   const bookings = await fetchBookings()
 
   if (bookings.length === 0) {
-    return <EmptyList />
+    return (
+      <EmptyList
+        heading='No trips booked yet'
+        message='When you book a stay, all the details will appear here.'
+        btnText='Explore stays'
+      />
+    )
   }
   return (
-    <div className='mt-16'>
-      <h4 className='mb-4 capitalize'>total bookings : {bookings.length}</h4>
-      <Table>
+    <section className='pb-12'>
+      <PageHeader
+        eyebrow='Your travel'
+        title='Bookings'
+        description={`${bookings.length} ${bookings.length === 1 ? 'trip' : 'trips'} in your booking history.`}
+      />
+      <div className='overflow-hidden rounded-3xl border border-border/70 bg-card shadow-[0_18px_60px_-42px_rgba(28,25,23,0.4)] [&_[data-slot=table-head]]:px-5 [&_[data-slot=table-cell]]:px-5 [&_[data-slot=table-cell]]:py-4 [&_[data-slot=table-header]]:bg-muted/35'>
+        <Table>
         <TableCaption>A list of your recent bookings.</TableCaption>
         <TableHeader>
           <TableRow>
@@ -53,7 +65,7 @@ async function BookingsPage() {
                 <TableCell>
                   <Link
                     href={`/properties/${propertyId}`}
-                    className='underline text-muted-foreground tracking-wide'
+                    className='font-medium transition-colors hover:text-primary'
                   >
                     {name}
                   </Link>
@@ -72,8 +84,9 @@ async function BookingsPage() {
             )
           })}
         </TableBody>
-      </Table>
-    </div>
+        </Table>
+      </div>
+    </section>
   )
 }
 

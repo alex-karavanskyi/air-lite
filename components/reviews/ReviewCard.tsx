@@ -15,7 +15,7 @@ type ReviewCardProps = {
 
 const ReviewCard = ({ reviewInfo, children }: ReviewCardProps) => {
   return (
-    <Card className='relative'>
+    <Card className='relative rounded-3xl border-border/70 shadow-[0_18px_50px_-40px_rgba(28,25,23,0.45)]'>
       <CardHeader>
         <div className='flex items-center'>
           <Image
@@ -23,10 +23,10 @@ const ReviewCard = ({ reviewInfo, children }: ReviewCardProps) => {
             alt='profile'
             width={48}
             height={48}
-            className='w-12 h-12 rounded-full object-cover'
+            className='size-12 rounded-2xl object-cover'
           />
           <div className='ml-4'>
-            <h3 className='text-sm font-bold capitalize mb-1'>
+            <h3 className='mb-1 text-sm font-semibold capitalize'>
               {reviewInfo.name}
             </h3>
             <Rating rating={reviewInfo.rating} />
