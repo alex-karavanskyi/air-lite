@@ -1,9 +1,15 @@
 'use client'
 
-import { Card, CardHeader } from '@/shared/ui/card'
 import { LuMinus, LuPlus } from 'react-icons/lu'
 import { Button } from '../../shared/ui/button'
 import { useState } from 'react'
+
+const detailCopy: Record<string, string> = {
+  guests: 'How many guests can stay?',
+  bedrooms: 'Private sleeping rooms',
+  beds: 'Total beds available',
+  baths: 'Private and shared bathrooms',
+}
 
 function CounterInput({
   detail,
@@ -23,38 +29,41 @@ function CounterInput({
   }
 
   return (
-    <Card className='mb-4'>
+    <div className='flex min-h-24 items-center gap-4 rounded-2xl border border-border/70 bg-muted/15 p-4 transition-colors hover:border-primary/20 hover:bg-muted/25'>
       <input type='hidden' name={detail} value={count} />
-      <CardHeader className='flex flex-col gap-y-5'>
-        <div className='flex flex-wrap items-center w-full'>
-          <div className='flex flex-col flex-grow min-w-[200px]'>
-            <h2 className='font-medium capitalize'>{detail}</h2>
-            <p className='text-muted-foreground text-sm'>
-              Specify the number of {detail}
-            </p>
-          </div>
-          <div className='flex items-center gap-4 mt-4 sm:mt-0'>
+      <div className='min-w-0 flex-1'>
+        <h3 className='font-medium capitalize'>{detail}</h3>
+        <p className='mt-1 text-xs leading-5 text-muted-foreground'>
+          {detailCopy[detail] || `Specify the number of ${detail}`}
+        </p>
+      </div>
+      <div className='flex shrink-0 items-center gap-2'>
             <Button
               variant='outline'
               size='icon'
               type='button'
               onClick={decreaseCount}
+              disabled={count === 0}
+              aria-label={`Decrease ${detail}`}
+              className='size-9 rounded-full bg-card'
             >
-              <LuMinus className='w-5 h-5 text-primary' />
+              <LuMinus className='size-4' />
             </Button>
-            <span className='text-xl font-bold w-5 text-center'>{count}</span>
+            <span className='w-6 text-center text-base font-semibold tabular-nums'>
+              {count}
+            </span>
             <Button
               variant='outline'
               size='icon'
               type='button'
               onClick={increaseCount}
+              aria-label={`Increase ${detail}`}
+              className='size-9 rounded-full bg-card'
             >
-              <LuPlus className='w-5 h-5 text-primary' />
+              <LuPlus className='size-4' />
             </Button>
-          </div>
-        </div>
-      </CardHeader>
-    </Card>
+      </div>
+    </div>
   )
 }
 

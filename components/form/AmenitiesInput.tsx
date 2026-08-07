@@ -32,22 +32,30 @@ const AmenitiesInput = ({ defaultValue }: { defaultValue?: Amenity[] }) => {
         name='amenities'
         value={JSON.stringify(selectedAmenities)}
       />
-      <div className='grid grid-cols-2 gap-4'>
+      <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
         {selectedAmenities.map((amenity) => (
-          <div key={amenity.name} className='flex items-center space-x-2'>
+          <label
+            key={amenity.name}
+            htmlFor={amenity.name}
+            className={`flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition-all ${
+              amenity.selected
+                ? 'border-primary/30 bg-primary/[0.06] text-foreground'
+                : 'border-border/70 bg-muted/10 text-muted-foreground hover:border-primary/20 hover:bg-muted/25'
+            }`}
+          >
+            <span className='flex size-9 shrink-0 items-center justify-center rounded-xl bg-card shadow-sm'>
+              <amenity.icon className='size-4' />
+            </span>
+            <span className='flex-1 text-sm font-medium capitalize'>
+              {amenity.name}
+            </span>
             <Checkbox
               id={amenity.name}
               checked={amenity.selected}
               onCheckedChange={() => handleChange(amenity)}
+              className='size-5 rounded-md'
             />
-            <label
-              htmlFor={amenity.name}
-              className='text-sm font-medium leading-none capitalize flex gap-x-2 items-center'
-            >
-              {amenity.name}
-              <amenity.icon className='w-4 h-4' />
-            </label>
-          </div>
+          </label>
         ))}
       </div>
     </section>
