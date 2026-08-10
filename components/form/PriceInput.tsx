@@ -1,6 +1,6 @@
 import { Label } from '../../shared/ui/label'
 import { Input } from '../../shared/ui/input'
-import { Prisma } from '@prisma/client'
+import { Prisma } from '@/generated/prisma/browser'
 
 const name = Prisma.PropertyScalarFieldEnum.price
 
