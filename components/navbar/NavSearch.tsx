@@ -3,11 +3,10 @@ import { Input } from '../../shared/ui/input'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import { useDebouncedCallback } from 'use-debounce'
 import { Suspense, useState, useEffect } from 'react'
+import { shouldShowNavSearch } from '@/utils/links'
 
-function NavSearchContent() {
+function NavSearchContent({ pathname }: { pathname: string }) {
   const searchParams = useSearchParams()
-
-  const pathname = usePathname()
   const { replace } = useRouter()
   const [search, setSearch] = useState(
     searchParams.get('search')?.toString() || '',
@@ -40,10 +39,18 @@ function NavSearchContent() {
   )
 }
 
+function NavSearchRouteGuard() {
+  const pathname = usePathname()
+
+  if (!shouldShowNavSearch(pathname)) return null
+
+  return <NavSearchContent pathname={pathname} />
+}
+
 function NavSearch() {
   return (
     <Suspense fallback={null}>
-      <NavSearchContent />
+      <NavSearchRouteGuard />
     </Suspense>
   )
 }

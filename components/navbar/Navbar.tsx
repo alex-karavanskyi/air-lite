@@ -1,5 +1,5 @@
 import NavSearch from './NavSearch'
-import LinksDropdown from './LinksDropdown'
+import AccountNavigation from './AccountNavigation'
 import DarkMode from './DarkMode'
 import Logo from './Logo'
 
@@ -11,7 +11,7 @@ const Navbar = () => {
         <NavSearch />
         <div className='flex gap-4 items-center'>
           <DarkMode />
-          <LinksDropdown />
+          <AccountNavigation />
         </div>
       </div>
     </nav>
